@@ -1,0 +1,57 @@
+<!-- The code below used HTML and JavaScript to build a sample Calculator -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <div id="main-page">
+            <input id="display" readonly>
+            <div id="buttons">
+                <button class="right-buttons" onclick="appendToDisplay('+')">+</button>
+                <button onclick="appendToDisplay('7')">7</button>
+                <button onclick="appendToDisplay('8')">8</button>
+                <button onclick="appendToDisplay('9')">9</button>
+                <button class="right-buttons" onclick="appendToDisplay('-')">-</button>
+                <button onclick="appendToDisplay('4')">4</button>
+                <button onclick="appendToDisplay('5')">5</button>
+                <button onclick="appendToDisplay('6')">6</button>
+                <button class="right-buttons" onclick="appendToDisplay('*')">*</button>
+                <button onclick="appendToDisplay('1')">1</button>
+                <button onclick="appendToDisplay('2')">2</button>
+                <button onclick="appendToDisplay('3')">3</button>
+                <button class="right-buttons" onclick="appendToDisplay('/')">/</button>
+                <button onclick="appendToDisplay('0')">0</button>
+                <button onclick="appendToDisplay('.')">.</button>
+                <button onclick="calculate()">=</button>
+                <button class="right-buttons" onclick="clearDisplay()">C</button>
+            </div>
+        </div>
+        <script>
+            let displayValue = '';
+            let restrictedCharAdded = false;
+        
+            function appendToDisplay(input) {
+              if (input === '+' || input === '-' || input === '*' || input === '/') {
+                if (!restrictedCharAdded) {
+                  displayValue += input;
+                  restrictedCharAdded = true;
+                }
+              } else {
+                displayValue += input;
+              }
+              document.getElementById('display').value = displayValue;
+            }
+        
+            function calculate() {
+              document.getElementById('display').value = eval(displayValue);
+            }
+        
+            function clearDisplay() {
+              displayValue = '';
+              restrictedCharAdded = false;
+              document.getElementById('display').value = '';
+            }
+          </script>
+    </body>
+</html>
